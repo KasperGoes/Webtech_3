@@ -1,0 +1,153 @@
+<!--
+    Role && functionality: In this html file we create the info page about 
+    browser marketshare.
+    This page is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about the browser marketshare that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Website about browsers">
+    <meta name="keywords" content="browser, webtechnology">
+    <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketShare | Welcome</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/browserpages.js" defer></script>
+    <script src="js/darkmode.js" defer></script>
+
+</head>
+<section class="test">
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"><span class="highlight"> Marketshare</span> </h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="marketshare.html">Marketshare</a></li>
+                    <li><a href="assessment.html">Quiz</a></li>
+                    <li><a href="login.html">Login</a> </li>
+                    <li><a href="profile.html">Profile</a> </li>
+                </ul>
+            </nav>
+            </div>  
+            <div id="menu1">
+                <label for="element-select">Choose an element:</label>
+                <select name="elements" id="element-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>  
+            <div id="menu2">
+                <label for="style-select">Choose a color:     </label>
+                <select name="stylez" id="style-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <div id="menu3">
+                <label for="size-select">Choose a font-size:</label>
+                <select name="size" id="size-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <button type="Go" id="changestyle">Go</button>  
+        </header>
+        <main>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <svg width="100%" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 496"><path 
+                    fill="currentColor" 
+                    d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                    transform="translate(-8 -8)"/
+                >
+                    </path
+                        fill = "current-color"
+                        transform = "translate(-8 -8)"
+                    >
+                </svg>
+            </button>
+            <div class="container">
+                <article class = "main-col">
+                    <h2 class="page-title">Browsers' Marketshare</h2>
+                    <section>
+                        As of January 2021, Google’s “Chrome for Android” accounted for 35.27 percent of the global web browser market share. <a href="firefox.html">Firefox</a> and <a href="explorer.html">Internet Explorer</a> have experienced massively reduced market share in recent years as <a href="chrome.html">Chrome</a>’s influence has expanded and new competitors have entered the market.
+                        How are web browsers changing?
+                        In the UK, smartphones have overtaken traditional desktop computers as the most popular way to access the internet. Tech giants such as Samsung and Apple have used their smartphone hardware as a platform to encourage the use of their mobile web browsers. Each iPhone comes pre-loaded with Apple’s <a href="safari.html">Safari</a> set as its default internet browser, and consumers have become increasingly comfortable with the platform without having to seek it out themselves specifically.
+                        Google’s role in the web
+                        Throughout the years, Google has become increasingly vertically integrated at many levels of the tech industry. Already controlling the world’s most used search engine, the company also owns the world’s most popular web browser (Google Chrome), the world’s most popular email service (Gmail), the world’s most popular GPS mapping service (Google Maps), and has recently branched out into hardware itself, with its line of smartphones and wearable devices. <br>
+                    </section>
+                    <section id="source">
+                        <b>Source:</b> <a href="https://www.statista.com/statistics/268299/most-popular-internet-browsers/#:~:text=As%20of%20January%202021%2C%20Google's,global%20web%20browser%20market%20share.">Statista.com</a>
+                    </section>
+                    <section>
+                        In the table below you see the market shares of the most used browsers for the year 2020.
+                    </section>
+
+                    <table class= "content-table" >  
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Logo</th>
+                                <th>Site</th>
+                                <th>Marketshare</th>               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><img src="img/Chrome.png" alt="Image of the Chrome logo" height=15 width=15 ></td>
+                                <td><a href="chrome.html">Google Chrome</a></td>
+                                <td>69.53%</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><img src="img/MicrosoftEdge.png" alt="Image of the Microsoft logo" height=15 width=15 ></td>
+                                <td><a href="edge.html">Microsoft Edge</a></td>
+                                <td>9.71%</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><img src="img/Firefox.webp" alt="Image of the Firefox logo" height=15 width=15></td>
+                                <td><a href="firefox.html">Firefox</a></td>
+                                <td>7.15%</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><img src="img/InternetExplorer.png" alt="Image of the Internet explorer logo" height=15 width=15 ></td>
+                                <td><a href="explorer.html">Internet Explorer</a></td>
+                                <td>4.53%</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><img src="img/Safari.jpg" alt="Image of the Safari logo" height=15 width=15 ></td>
+                                <td><a href="safari.html">Safari</a></td>
+                                <td>3.92%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <section>
+                        In the video below we visualize some data. This data visualization goes back to the first graphical web browser, Mosaic. Before Mosaic most users browsed the web either with a text based web browser such as Lynx or using Nexus which had a graphical interface, which was easier to use. 
+                    </section>
+                    <a id='button'>Watch Video</a>
+                    <div id ='play-video'>
+                        <iframe src="https://www.youtube.com/embed/W4wWdmfOibY"></iframe>
+                    </div>
+                </article>
+            </div>
+        </main>
+        <footer>
+            <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+        </footer>
+        <script src="js/marketshare.js"></script>
+    </body>
+</section>
+</html>

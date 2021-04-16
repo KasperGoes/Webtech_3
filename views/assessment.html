@@ -1,0 +1,147 @@
+<!--
+    Role && functionality: In this html file we create the quiz of our 
+    website. In here the users can answer quizzes is logged in.
+    This page is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about the browser marketshare that we want. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Website about browsers">
+        <meta name="keywords" content="browser, webtechnology">
+        <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assessment | Welcome</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/assessment.js" defer></script>        
+        <script src="js/darkmode.js" defer></script>
+    </head>
+        <header>
+            <div class="container">
+                <div id="branding">
+                <h1><img src="./img/logo3.png" aalt="Image of the logo of Browserinfo.com"> Quiz</h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="marketshare.html">Marketshare</a></li>
+                    <li><a href="assessment.html">Quiz</a></li>
+                    <li><a href="login.html">Login</a> </li>
+                    <li><a href="profile.html">Profile</a> </li>
+                    </ul>
+                </nav>
+            </div>     
+        </header>
+        <main>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <svg width="100%" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 496"><path 
+                    fill="currentColor" 
+                    d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                    transform="translate(-8 -8)"/
+                >
+                    </path
+                        fill = "current-color"
+                        transform = "translate(-8 -8)"
+                    >
+                </svg>
+            </button>
+            <div id="topic1div">
+                <button type="button" id="topic1btn">Topic 1</button>
+            </div>
+            <div id="topic2div">
+                <button type="button" id="topic1btn">Topic 2</button>
+            </div>
+        </main>
+                    <footer>
+                        <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+                    </footer>
+                    <script>
+                        function showquizest1() {          
+                            topic1div = document.getElementById('topic1div');
+                            quiz1 = document.createElement('DIV');
+                            quiz1.id = 'topic1quiz1';
+                            quiz1btn = document.createElement('BUTTON');
+                            quiz1btn.appendChild(document.createTextNode('Quiz 1'));
+                            topic1div.appendChild(quiz1btn);
+                            quiz1btn.id = 'quiz1btn';
+                            quiz1.appendChild(quiz1btn)
+                            topic1div.appendChild(quiz1)
+                        }
+
+                        function showquestionst1q1() {
+                            console.log('hee')
+                            topic1quiz1 = document.getElementById('topic1quiz1')
+                            quiz1q1btn = document.createElement('BUTTON');
+                            topic1quiz1question1 = document.createElement('DIV');
+                            topic1quiz1question1.id = 'topic1quiz1question1';
+                            quiz1q1btn.appendChild(document.createTextNode('Question 1'));
+                            topic1quiz1question1.appendChild(quiz1q1btn);
+                            topic1quiz1.appendChild(topic1quiz1question1)
+                            quiz1q1btn.id = 'quiz1q1btn';
+                        }
+
+                        function get(url){ //parameters toevoegen
+                            var req = new XMLHttpRequest();
+                            req.open('GET', url);
+                            req.onreadystatechange = function(){
+                                if (req.readyState === 4 && req.status === 200){
+                                    var demo = document.getElementById('topic1quiz1question1')
+                                    var text = document.createElement('SECTION')
+                                    console.log('req.response: ' + req.response);   
+                                    console.log('type: ' + typeof req.response);
+                                    var reqresponseparse = JSON.parse(req.response);
+                                    text.appendChild(document.createTextNode(reqresponseparse.que_text))
+                                    demo.appendChild(text)
+                                    if (reqresponseparse.loggedIn){
+                                        var ansform = document.createElement('form');
+                                        ansform.setAttribute('action', '/getanswer/1');
+                                        ansform.setAttribute('method', 'GET')
+                                        
+                                        //
+                                        var anstextbox = document.createElement('input');
+                                        anstextbox.setAttribute('type', 'text');
+                                        anstextbox.setAttribute('placeholder', 'Write your answer here');
+                                        anstextbox.setAttribute('name', 'givenanswer');
+                                        //
+                                        var btnanstextbox = document.createElement('input');
+                                        btnanstextbox.setAttribute('type', 'submit');
+                                        btnanstextbox.setAttribute('value', 'submit');
+                                        //
+                                        ansform.appendChild(anstextbox);
+                                        ansform.appendChild(btnanstextbox);
+                                        demo.appendChild(ansform);
+                                        //
+                                        
+                                    }
+                                }
+                            }
+                            req.send();
+                        }
+
+                        document.getElementById('topic1btn').addEventListener("click", () => showquizest1());
+                        document.addEventListener("click", function(e){
+                            if(e.target && e.target.id == 'quiz1btn'){
+                                showquestionst1q1();
+                            }
+                        })
+                        document.addEventListener("click", function(e){
+                            if(e.target && e.target.id == 'quiz1q1btn'){
+                                get('/gett1q1q1');
+                            }
+                        })
+                    </script>
+                </body>
+            </section>
+</html>
+    
+    

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Website about browsers">
+        <meta name="keywords" content="browser, webtechnology">
+        <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Browserinfo.com | Profile</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="js/darkmode.js" defer ></script>
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com</h1>
+            </div>
+            <nav>
+                <ul class="ordering">
+                    <li><a href="home.html">Home</a></li>  
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="marketshare.html">Marketshare</a></li>
+                    <li><a href="assessment.html">Quiz</a></li>
+                    <li><a href="login.html">Login</a> </li>
+                    
+                </ul>
+            </nav>
+        </div>  
+        <div id="menu1">
+            <label for="element-select">Choose an element:</label>
+            <select name="elements" id="element-select">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>  
+        <div id="menu2">
+            <label for="style-select">Choose a color:     </label>
+            <select name="stylez" id="style-select">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <div id="menu3">
+            <label for="size-select">Choose a font-size:</label>
+            <select name="size" id="size-select">
+                <option value="">--Please choose an option--</option>
+            </select>
+        </div>
+        <button type="Go" id="changestyle">Go</button>  
+    </header>
+    <div class='profile_body'>
+        <div class="left">
+            <img src="img/profile-pic.jpg"alt='stock user pic' width="100">
+        </div>
+        <div class='right'>
+                <h3>User Info</h1>
+                <div class="profile_data">
+                    <div class="data" >
+                        <h4>Name</h4>
+                        <div id="userlogname">  
+                        </div>
+                    </div>
+                    <div class="data" >
+                        <h4>Password</h4>
+                        <div id="userpass"> 
+                        </div>
+                    </div>
+                    <div class='data' >
+                        <h4>Score</h4>
+                        <div id="userscore"></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script>
+        function get(url){ //parameters toevoegen
+            var req = new XMLHttpRequest();
+            req.open('GET', url);
+            req.onreadystatechange = function(){
+                if (req.readyState === 4 && req.status === 200){
+                    ///show username
+                    var reqresponseparse = JSON.parse(req.response);
+                    var textuser = document.createElement('SECTION');
+                    var userinfo = document.getElementById('userlogname');
+                    textuser.appendChild(document.createTextNode(reqresponseparse.student_user));
+                    userinfo.appendChild(textuser);
+                    /// show password
+                    var textpass = document.createElement('SECTION');
+                    var userinfopass = document.getElementById('userpass');
+                    textpass.appendChild(document.createTextNode(reqresponseparse.student_pass));
+                    userinfopass.appendChild(textpass);
+
+                    /// make form to change username
+                    var usernameform = document.createElement('form');
+                    usernameform.setAttribute('action', '/changeuser');
+                    usernameform.setAttribute('method', 'POST')
+                    //
+                    var newusernamebox = document.createElement('input');
+                    newusernamebox.setAttribute('type', 'text');
+                    newusernamebox.setAttribute('placeholder', 'New username');
+                    newusernamebox.setAttribute('name', 'newusername');
+                    //
+                    var btnnewname = document.createElement('input');
+                    btnnewname.setAttribute('type', 'submit');
+                    btnnewname.setAttribute('value', 'Change');
+                    //
+                    usernameform.appendChild(newusernamebox);
+                    usernameform.appendChild(btnnewname);
+                    userinfo.appendChild(usernameform);
+
+
+
+                    //Make form to change password       
+                    var passwordform = document.createElement('form');
+                    passwordform.setAttribute('action', '/changepass');
+                    passwordform.setAttribute('method', 'POST')
+                    //
+                    var newpassbox = document.createElement('input');
+                    newpassbox.setAttribute('type', 'text');
+                    newpassbox.setAttribute('placeholder', 'New password');
+                    newpassbox.setAttribute('name', 'newpassword');
+                    //
+                    var btnnewpass = document.createElement('input');
+                    btnnewpass.setAttribute('type', 'submit');
+                    btnnewpass.setAttribute('value', 'Change');
+                    //
+                    passwordform.appendChild(newpassbox);
+                    passwordform.appendChild(btnnewpass);
+                    userinfopass.appendChild(passwordform);     
+                }
+            }
+            req.send();
+        }
+
+        function getscore(url){ //parameters toevoegen
+            var req = new XMLHttpRequest();
+            req.open('GET', url);
+            req.onreadystatechange = function(){
+                if (req.readyState === 4 && req.status === 200){
+                    ///show score
+                    var reqresponseparse = JSON.parse(req.response);
+                    var textscore = document.createElement('SECTION');
+                    var userinfoscore = document.getElementById('userscore');
+                    textscore.appendChild(document.createTextNode('quiz ' + reqresponseparse.quiz_id + ': ' + reqresponseparse.student_score));
+                    userinfoscore.appendChild(textscore);
+                }
+            }
+            req.send();
+        }
+
+        window.addEventListener('load', (event) => {
+            get('/userinfo');
+        });
+        ///
+        window.addEventListener('load', (event) => {
+            getscore('/userinfoscore/11');
+        });
+        window.addEventListener('load', (event) => {
+            getscore('/userinfoscore/12');
+        });
+        window.addEventListener('load', (event) => {
+            getscore('/userinfoscore/21');
+        });
+        window.addEventListener('load', (event) => {
+            getscore('/userinfoscore/22');
+        });
+    </script>
+</body>
+</html>

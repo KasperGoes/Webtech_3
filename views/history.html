@@ -1,0 +1,148 @@
+<!--
+    Role && functionality: In this html file we create the info page about 
+    browser history.
+    This page is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about the browser history that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Website about browsers">
+        <meta name="keywords" content="browser, webtechnology">
+        <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>History | Welcome</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/browserpages.js" defer></script>
+        <script src="js/darkmode.js" defer ></script>
+    </head>
+    <section class="test">
+        <body>
+            <header>
+                <div class="container">
+                    <div id="branding">
+                        <h1><img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> History</h1>
+                    </div>
+                    <nav>
+                            <ul class="ordering">
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="marketshare.html">Marketshare</a></li>
+                            <li><a href="assessment.html">Quiz</a></li>
+                            <li><a href="login.html">Login</a> </li>
+                            <li><a href="profile.html">Profile</a> </li>
+                        </ul>
+                    </nav>
+                </div>  
+                <div id="menu1">
+                    <label for="element-select">Choose an element:</label>
+                    <select name="elements" id="element-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>  
+                <div id="menu2">
+                    <label for="style-select">Choose a color:     </label>
+                    <select name="stylez" id="style-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <div id="menu3">
+                    <label for="size-select">Choose a font-size:</label>
+                    <select name="size" id="size-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <button type="Go" id="changestyle">Go</button>  
+            </header>
+            <main>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    <svg width="100%" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 496 496"><path 
+                        fill="currentColor" 
+                        d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                        transform="translate(-8 -8)"/
+                    >
+                        </path
+                            fill = "current-color"
+                            transform = "translate(-8 -8)"
+                        >
+                    </svg>
+                </button>
+                <article id="main" class="container">
+                        <section class = "main-col">
+                            <h2 class="page-title">Browser Timeline</h2>
+                            <p>
+                                Let's look at the birth of notable browsers then we shortly explain <a href="#1" >the War between them</a> and <a href="#2" >Modern Browsing</a>.  
+                            </p>
+                            <ul>
+
+                                <li>
+                                <strong>1990</strong>
+                                – The WorldWideWeb (not to be confused with the World Wide Web) was the first browser ever created by W3C Director Tim Berners-Lee, then renamed Nexus to differentiate from the actual World Wide Web. Unlike today, this was the only browser and the only way to access the web." 
+                                </li>
+                                <li>
+                                    <strong>2003</strong>
+                                    – Apple’s Safari browser was released specifically for Macintosh computers instead of Navigator.
+
+                                </li>
+                                <li>
+                                    <strong>2004</strong>
+                                    – Mozilla launched Firefox as Netscape Navigator faded out.
+                                </li>
+                                <li>
+                                    <strong>2007</strong>
+                                    – Mobile Safari was introduced as Apple’s mobile web browser and continues to dominate the iOS market.
+                                </li>
+                                <li>
+                                    <strong>2008</strong>
+                                    – Google Chrome developed by Google. It was first released for <a href="https://en.wikipedia.org/wiki/Microsoft_Windows" target="_blank" rel="noopener noreferrer">Microsoft Windows</a>  and later ported to <a href="https://en.wikipedia.org/wiki/Linux" target="_blank" rel="noopener noreferrer" >Linux</a> ,<a href="https://en.wikipedia.org/wiki/MacOS" target="_blank" rel="noopener noreferrer">macOS</a>, <a href="https://en.wikipedia.org/wiki/IOS" target="_blank" rel="noopener noreferrer">iOs</a>, and <a href="https://en.wikipedia.org/wiki/Android_(operating_system)" target="_blank" rel="noopener noreferrer">Android</a> .
+                                </li>
+                                
+                            </ul>
+                        </section>
+                        <section class="main-col">
+                                <h3 class="page-title" id="1" >
+                                War between browsers
+                            </h3>
+                            <p>
+                                browser wars have been happening since Internet Explorer and Netscape Navigator went up against each other to be best in class browser of the 90’s. Netscape had previously been leading the market, but with the release of Internet Explorer 3 in 1996, Microsoft took the lead. Since it was automatically included in the Windows OS, it became the standard for many desktop users.
+                            </p>
+                            <p>
+                                The same situation happened when Safari came to existence in 2003. Whereas Macintosh users were previously on IE or Navigator, Safari being preinstalled in Apple’s OS mean that it gained control of that desktop market.
+                            </p>
+                            <p>
+                                After some time of IE beating out Navigator, Netscape made the code for the browser open source and gave it to Mozilla. However, when Firefox was introduced in 2004, it saw a rapid rise in popularity for a few years. That is until Google Chrome was released in 2008 and quickly fought to be the favored browser, which we still see today.                    
+                            </p>
+                        </section>
+                        <section class="main-col">
+                            <h3 class="page-title" id="2">
+                                Modern Browsing
+                            </h3>
+                            <p>
+                                Today, <a href="https://www.w3schools.com/browsers/" target="_blank" rel="noopener noreferrer"> Chrome still rules desktop browsers </a> while <a href="https://www.statista.com/statistics/272664/market-share-held-by-mobile-browsers-in-the-us/" target="_blank" rel="noopener noreferrer">Safari owns the mobile browsing market</a>.
+                                However, there still is no defined winner. The browser wars are still going strong and fragmentation is a more prevalent issue than ever due to the frequent updates and releases of different browser versions and operating systems.
+                            </p>
+                            <p>
+                                Browsers preferences are also largely dependant on demographics including age, country, and even job. For example, many schools and companies have certain requirements about what devices, operating systems, and browsers users may access and don’t permit individuals to update on their own.                   
+                            </p>
+                            <p>
+                                Additionally, as browsers continually update versions hoping to be the next Google Chrome, there’s no saying when one will finally surpass its popularity or when another company creates their own browser to enter the mix.                   
+                            </p>
+                            <p id="source">
+                                <b>Source:</b> <a href ="https://smartbear.com/blog/2018/history-of-web-browsers/?lang=de-de#:~:text=1993%20%E2%80%93%20Mosaic%20was%20the%20first,as%20Microsoft's%20first%20web%20browser. " target="_blank" rel="noopener noreferrer">A Brief History of Web Browsers</a>.
+                            </p>             
+                        </section> 
+                </article>
+            </main>
+                <footer>
+                    <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+                </footer>
+        </body>
+    </section>
+</html>

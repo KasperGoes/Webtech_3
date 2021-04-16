@@ -1,0 +1,111 @@
+<!--
+    Role && functionality: In this html file we create the chrome info page
+    which is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about Google Chrome that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="SanazNaj">
+        <meta name="description" content="Webdesign">
+        <title>history | Welcom</title>
+        <meta name="keywords" content="browser, webtechnology">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/browserpages.js" defer></script>
+        <script src="js/darkmode.js" defer></script>
+    </head>
+    <section class="test">
+        <body>
+            <header>
+                <div class="container">
+                    <div id="branding">
+                        <h1><img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com </h1>
+                    </div>
+                    <nav>
+                        <ul class="ordering">
+                            <li><a href="home.html">Home</a></li>  
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="marketshare.html">Marketshare</a></li>
+                            <li><a href="assessment.html">Quiz</a></li>
+                            <li><a href="login.html">Login</a> </li>
+                            <li><a href="profile.html">Profile</a> </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div id="menu1">
+                    <label for="element-select">Choose an element:</label>
+                    <select name="elements" id="element-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>  
+                <div id="menu2">
+                    <label for="style-select">Choose a color:     </label>
+                    <select name="stylez" id="style-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <div id="menu3">
+                    <label for="size-select">Choose a font-size:</label>
+                    <select name="size" id="size-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <button type="Go" id="changestyle">Go</button>  
+            </header>
+            <main>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    <svg width="100%" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 496 496"><path 
+                        fill="currentColor" 
+                        d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                        transform="translate(-8 -8)"/
+                    >
+                        </path
+                            fill = "current-color"
+                            transform = "translate(-8 -8)"
+                        >
+                    </svg>
+                </button> 
+                <section id="chromeshowcase">
+                    <h2>Google Chrome</h2>
+                    <img src="./img/chrome6.png" alt="Image of logo of Chrome." width="250rem">
+                </section>
+                <article class="generalinfo">
+                    <section>
+                        <b>Google Chrome</b> is a cross-platform web browser developed by Google. It was first released in 2008 for Microsoft Windows, and was later ported to Linux, macOS, iOS, and Android where it is the default browser built into the OS. The browser is also the main component of Chrome OS, where it serves as the platform for web applications.
+                    </section>
+                    <section>
+                        Most of Chrome's source code comes from Google's free and open-source software project Chromium, but Chrome is licensed as proprietary freeware. WebKit was the original rendering engine, but Google eventually forked it to create the Blink engine; all Chrome variants except iOS now use Blink.
+                    </section>
+                    <section>
+                        As of November 2020, StatCounter estimates that Chrome has a 70% worldwide browser market share (after peaking at 72.38% in November 2018) on personal computers (PC), and 66.12% across all platforms. Because of this success, Google has expanded the "Chrome" brand name to other products: Chrome OS, Chromecast, Chromebook, Chromebit, Chromebox, and Chromebase.
+                    </section>
+                    <section id="source">
+                        <b>Source:</b> <a href="https://en.wikipedia.org/wiki/Google_Chrome">Wikipedia: Google Chrome</a>
+                    </section>
+                </article>
+                <article class = "browserinfo">
+                    <h3>
+                        General information about Chrome
+                    </h3>
+                    <ul>
+                        <li><b>Release date: </b>September 2 2008</li>
+                        <li><b>Most recent version: </b>87.0.4280.77</li>
+                        <li><b>Developer: </b>Google LLC</li>
+                        <li><b>Layout-engine: </b>Blink</li>
+                        <li><b>Writen in: </b>Javascript, Python</li>
+                        <li><b>Platforms: </b>IA-32, x86-64, ARM-architecture</li>
+                    </ul>
+                </article>
+            </main>
+        <footer>
+            <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+            </footer>
+        </body>
+    </section>
+</html>

@@ -1,0 +1,110 @@
+<!--
+    Role && functionality: In this html file we create the Internet Explorer
+    info page.
+    which is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about Internet Explorer that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="SanazNaj">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Webdesign">
+        <title>history | Welcom</title>
+        <meta name="keywords" content="browser, webtechnology">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/browserpages.js" defer></script>
+        <script src="js/darkmode.js" defer></script>
+
+    </head>
+    <section class="test">
+        <body>
+            <header>
+                <div class="container">
+                <div id="branding">
+                    <h1><img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com </h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                        <li><a href="home.html">Home</a></li>  
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="marketshare.html">Marketshare</a></li>
+                        <li><a href="assessment.html">Quiz</a></li>
+                        <li><a href="login.html">Login</a> </li>
+                        <li><a href="profile.html">Profile</a> </li>
+                    </ul>
+                </nav>
+                </div>  
+                <div id="menu1">
+                    <label for="element-select">Choose an element:</label>
+                    <select name="elements" id="element-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>  
+                <div id="menu2">
+                    <label for="style-select">Choose a color:</label>
+                    <select name="stylez" id="style-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <div id="menu3">
+                    <label for="size-select">Choose a font-size:</label>
+                    <select name="size" id="size-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <button type="Go" id="changestyle">Go</button>   
+            </header>
+                <main>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    <svg width="100%" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 496 496"><path 
+                        fill="currentColor" 
+                        d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                        transform="translate(-8 -8)"/
+                    >
+                        </path
+                            fill = "current-color"
+                            transform = "translate(-8 -8)"
+                        >
+                    </svg>
+                </button>
+                <section id="explorershowcase">
+                    <h2>Internet Explorer</h2>
+                    <img src="./img/explorer.png" alt="Image of logo of Explorer." width="150rem">
+                </section>
+                <article class="generalinfo">
+                    <section>
+                        <b>Internet Explorer</b> (formerly Microsoft Internet Explorer and Windows Internet Explorer, commonly abbreviated IE or MSIE) is a series of graphical web browsers developed by Microsoft and included in the Microsoft Windows line of operating systems, starting in 1995. It was first released as part of the add-on package Plus! for Windows 95 that year. Later versions were available as free downloads, or in-service packs, and included in the original equipment manufacturer (OEM) service releases of Windows 95 and later versions of Windows. New feature development for the browser was discontinued in 2016[4] in favor of their new browser Microsoft Edge.[5][6] Since Internet Explorer is a Windows component and is included in long-term lifecycle versions of Windows such as Windows Server 2019, it will continue to receive security updates until at least 2029. Microsoft announced in August 2020 that as of August 2021, web-based Microsoft 365 products will no longer support Internet Explorer, while Microsoft Teams ended support for IE earlier in November 2020.
+                    </section>
+                    <section>
+                        Internet Explorer was once the most widely used web browser, attaining a peak of about 95% usage share by 2003. This came after Microsoft used bundling to win the first browser war against Netscape, which was the dominant browser in the 1990s. Its usage share has since declined with the launch of Firefox (2004) and Google Chrome (2008), and with the growing popularity of mobile operating systems such as Android and iOS that do not support Internet Explorer.            
+                    </section>
+                    <section id="source">
+                        <b>Source:</b> <a href="https://en.wikipedia.org/wiki/Internet_Explorer">Wikipedia: Internet Explorer</a>
+                    </section>
+                </article>
+                <article class = "browserinfo">
+                    <h3>
+                        General information about Internet Explorer
+                    </h3>
+                    <ul>
+                        <li><b>Release date: </b>August 16 2995</li>
+                        <li><b>Most recent version: </b>Internet Explorer 11</li>
+                        <li><b>Developer: </b>Microsoft</li>
+                        <li><b>Layout-engine: </b>Trident</li>
+                        <li><b>Writen in: </b>C++</li>
+                        <li><b>Platforms: </b>IA-32, x86-64, ARMv7, IA-64</li>
+                    </ul>
+                </article>
+            </main>
+            <footer>
+                <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+            </footer>
+        </body>
+    </section>
+</html>

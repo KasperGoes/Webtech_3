@@ -1,0 +1,132 @@
+<!--
+    Role && functionality: In this html file we create the home page of the 
+    website. When you open the website this page is loaded.
+    This page is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about the general browser that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Website about browsers">
+    <meta name="keywords" content="browser, webtechnology">
+    <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browserinfo.com | Welcome</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/home.js" defer></script>
+    <script src="js/darkmode.js" defer ></script>
+</head>
+<section class="test">
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com</h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                        <li><a href="home.html">Home</a></li>  
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="marketshare.html">Marketshare</a></li>
+                        <li><a href="assessment.html">Quiz</a></li>
+                        <li><a href="login.html">Login</a> </li>
+                        <li><a href="profile.html">Profile</a> </li>
+                    </ul>
+                </nav>
+            </div>  
+            <div id="menu1">
+                <label for="element-select">Choose an element:</label>
+                <select name="elements" id="element-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>  
+            <div id="menu2">
+                <label for="style-select">Choose a color:     </label>
+                <select name="stylez" id="style-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <div id="menu3">
+                <label for="size-select">Choose a font-size:</label>
+                <select name="size" id="size-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <button type="Go" id="changestyle">Go</button>  
+        </header>
+        <main>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <svg width="100%" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 496"><path 
+                    fill="currentColor" 
+                    d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                    transform="translate(-8 -8)"/
+                >
+                    </path
+                        fill = "current-color"
+                        transform = "translate(-8 -8)"
+                    >
+                </svg>
+            </button>
+            <article id="showcase">
+                <div class="container">
+                    <section>
+                        <h2>Browsers</h2>
+                        A web browser (commonly referred to as a browser) is a software application for accessing information on the World Wide Web. When a user requests a web page from a particular website, the web browser retrieves the necessary content from a web server and then displays the page on the user's device. Down here you can find the most used browsers and information about them.
+                    </section>
+                </div> 
+            </article>
+            <article id="boxes">
+                <div class="container">
+                    <div class="box">
+                        <img src="./img/chrome3.png" alt="Image of the Chrome logo" >
+                        <h3>Chrome</h3>
+                        <p>Google Chrome is a browser developed by Google. <a href="chrome.html">Learn more...</a>
+                    </div>
+                    <div class="box">
+                        <img src="./img/MicrosoftEdge.png" alt="Image of the Microsoft Edge logo">
+                        <h3>Microsoft Edge</h3>
+                        <p>Microsoft Edge is a browser developed by Microsoft. <a href="edge.html">Learn more...</a>
+                    </div>
+                    <div class="box">
+                        <img src="./img/firefox.png" alt="Image of the Firefox logo">
+                        <h3>Firefox</h3>
+                        <p>Firefox is a browser developed by the Mozilla Foundation. <a href="firefox.html">Learn more...</a>
+                    </div>
+                    <div class="box">
+                        <img src="./img/explorer.png" alt="Image of the Internet Explorer logo">
+                        <h3>Internet Explorer</h3>
+                        <p>Internet Explorer is a browser developed by Microsoft. <a href="explorer.html">Learn more...</a>
+                    </div>
+                    <div class="box">
+                        <img src="./img/safari.svg" alt="Image of the Safari logo">
+                        <h3>Safari</h3>
+                        <p>Safari is a browser developed by Apple. <a href="safari.html">Learn more...</a>
+                    </div>
+                </div>
+            </article>
+        </main>
+        <footer>
+            <article id="newsletter">
+                <div class="container">
+                    <h3>Subscribe to the newsletter</h3>
+                    <form id="newsletterform">
+                        <input type="email" placeholder="Enter Email" id="inputmail">
+                        <div id="buttondiv">
+                            <button type="submit" id="button_1"> Subscribe</button>
+                        </div>
+                    </form>              
+                </div>
+            </article>
+            <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+        </footer>
+    </body>
+</section>
+</html>
+
+

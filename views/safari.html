@@ -1,0 +1,104 @@
+<!--
+    Role && functionality: In this html file we create the safari info page
+    which is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about Safari that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="SanazNaj">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Webdesign">
+        <title>history | Welcome</title>
+        <meta name="keywords" content="browser, webtechnology">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/browserpages.js" defer></script>  
+        <script src="js/darkmode.js" defer></script>      
+    </head>
+<section class="test">
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com </h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                        <li><a href="home.html">Home</a></li>  
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="marketshare.html">Marketshare</a></li>
+                        <li><a href="assessment.html">Quiz</a></li>
+                        <li><a href="login.html">Login</a> </li>
+                        <li><a href="profile.html">Profile</a> </li>
+                    </ul>
+                </nav>
+            </div>  
+            <div id="menu1">
+                <label for="element-select">Choose an element:</label>
+                <select name="elements" id="element-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>  
+            <div id="menu2">
+                <label for="style-select">Choose a color:</label>
+                <select name="stylez" id="style-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <div id="menu3">
+                <label for="size-select">Choose a font-size:</label>
+                <select name="size" id="size-select">
+                    <option value="">--Please choose an option--</option>
+                </select>
+            </div>
+            <button type="Go" id="changestyle">Go</button>  
+        </header>
+        <main>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+            <svg width="100%" 
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 496 496"><path 
+                fill="currentColor" 
+                d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                transform="translate(-8 -8)"/
+            >
+                </path
+                    fill = "current-color"
+                    transform = "translate(-8 -8)"
+                >
+            </svg>
+        </button>
+        <section id="safarishowcase">
+            <h2>Safari</h2>
+            <img src="./img/safari.svg" alt="Image of logo of Safari." width="150rem">
+        </section>
+        <article class="generalinfo">
+            <section>
+                <b>Safari</b> is a graphical web browser developed by Apple, based on the WebKit engine. First released on desktop in 2003 with Mac OS X Panther, a mobile version has been bundled with iOS devices since the iPhone's introduction in 2007. Safari is the default browser on Apple devices. A Windows version was available from 2007 to 2012.                
+            </section>
+            <section id="source">
+                <b>Source:</b> <a href="https://en.wikipedia.org/wiki/Safari_(web_browser)">Wikipedia: Safari (web browser)</a>
+            </section>
+        </article>
+        <article class = "browserinfo">
+            <h3>
+                General information about Safari
+            </h3>
+            <ul>
+                <li><b>Release date: </b>January 7 2003</li>
+                <li><b>Most recent version: </b>macOS: 13.1.2, iOS: 13.0;</li>
+                <li><b>Developer: </b>Apple</li>
+                <li><b>Layout-engine: </b>Webkit</li>
+                <li><b>Writen in: </b>C++, Swift, Objective-C</li>
+            </ul>
+        </article>
+    </main>
+        <footer>
+            <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+        </footer>
+    </body>
+</section>
+</html>

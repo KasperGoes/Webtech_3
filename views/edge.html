@@ -1,0 +1,110 @@
+<!--
+    Role && functionality: In this html file we create the edge info page
+    which is also used in one of the quizzes later.
+    structure: in the head of the page we write meta-data about the page.
+    In the body we first define the header and the navigation bar. After that
+    we write the info about Edge that we want. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="SanazNaj">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Webdesign">
+        <meta name="keywords" content="browser, webtechnology">
+        <title>history | Welcom</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="./js/browserpages.js" defer></script>
+        <script src="js/darkmode.js" defer ></script>
+
+    </head>
+    <section class="test">
+        <body>
+            <header>
+                <div class="container">
+                    <div id="branding">
+                        <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com </h1>
+                    </div>
+                    <nav>
+                        <ul class="ordering">
+                            <li><a href="home.html">Home</a></li>  
+                            <li><a href="history.html">History</a></li>
+                            <li><a href="marketshare.html">Marketshare</a></li>
+                            <li><a href="assessment.html">Quiz</a></li>
+                            <li><a href="login.html">Login</a> </li>
+                            <li><a href="profile.html">Profile</a> </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div id="menu1">
+                    <label for="element-select">Choose an element:</label>
+                    <select name="elements" id="element-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>  
+                <div id="menu2">
+                    <label for="style-select">Choose a color:</label>
+                    <select name="stylez" id="style-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <div id="menu3">
+                    <label for="size-select">Choose a font-size:</label>
+                    <select name="size" id="size-select">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
+                <button type="Go" id="changestyle">Go</button>  
+            </header>
+            <main>
+                <button id="dark-mode-toggle" class="dark-mode-toggle">
+                    <svg width="100%" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 496 496"><path 
+                        fill="currentColor" 
+                        d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                        transform="translate(-8 -8)"/
+                    >
+                        </path
+                            fill = "current-color"
+                            transform = "translate(-8 -8)"
+                        >
+                    </svg>
+                </button>
+                <section id="edgeshowcase">
+                    <h2>Microsoft Edge</h2>
+                    <img src="./img/MicrosoftEdge.png" alt="Image of logo of Microsoft Edge." width="120rem">
+                </section>
+                <article class="generalinfo">
+                    <section>
+                        <b>Microsoft Edge</b> is a cross-platform web browser developed by Microsoft. It was first released for Windows 10 and Xbox One in 2015, then for Android and iOS in 2017, for macOS in 2019, and as a preview for Linux in October 2020.
+                    </section>
+                    <section>
+                        Edge includes integration with Cortana and has extensions hosted on the Microsoft Store. Unlike Internet Explorer, Edge does not support the legacy ActiveX and BHO technologies.
+                    </section>
+                    <section>
+                        Edge was initially built with Microsoft's own proprietary browser engine EdgeHTML and their Chakra JavaScript engine, a version now referred to as Microsoft Edge Legacy. In 2019, Microsoft announced plans to rebuild the browser as Chromium-based with Blink and V8 engines. During development (codenamed Anaheim), Microsoft made preview builds of Edge available on Windows 7, 8, 8.1, and macOS, in addition to Windows 10. Microsoft announced the public release of the new Edge on January 15, 2020. In June 2020, Microsoft began automatic rollout of the new version via Windows Update for Windows 7, 8.1, and Windows 10 versions from 1803 to 2004. Microsoft plans to stop releasing security patches for Edge Legacy after March 9, 2021, and release a security update on April 13, 2021, which will replace Edge Legacy with Chromium-based Edge. If you care all about speed, you should pick Microsoft Edge because it is the fastest of all browsers.           
+                    </section>
+                    <section id="source">
+                        <b>Source:</b> <a href="https://en.wikipedia.org/wiki/Microsoft_Edge">Wikipedia: Microsoft Edge</a>
+                    </section>
+                </article>
+                <article class = "browserinfo">
+                    <h3>
+                        General information about Microsoft Edge
+                    </h3>
+                    <ul>
+                        <li><b>Release date: </b>July 29 2015</li>
+                        <li><b>Developer: </b>Microsoft</li>
+                        <li><b>Writen in: </b>C++, C#</li>
+                        <li><b>Platforms: </b>IA-32, x86-64, ARM-architectuur, AArch64</li>
+                    </ul>
+                </article>
+            </main>
+            <footer>
+                <p>Najiyan Tabriz, Goes, van Rees, Copyright &copy;2021</p>
+            </footer>
+        </body>
+    </section>
+</html>

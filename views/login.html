@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/assessmentClient.js" defer></script>        
+    <title>Document</title>
+</head>
+<body class="bodylogin">
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com</h1>
+            </div>
+            <nav>
+                <ul class="ordering">
+                    <li><a href="home.html">Home</a></li>  
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="marketshare.html">Marketshare</a></li>
+                    <li><a href="assessment.html">Quiz</a></li>
+                    <li><a href="login.html">Login</a> </li>
+                    <li><a href="profile.html">Profile</a> </li>
+                </ul>
+            </nav>
+        </div>  
+
+    </header>
+    <div id="studentpage">
+        <form class="registerbox"  action="/registerform" method="POST">
+            <h1>register</h1>
+            <input type="text" placeholder="Enter username" name="userreg">   
+            <input type="password" placeholder="Enter password" name="passreg">
+            <input type="submit" name = "" value="Login" id="register-btn0">
+        </form>     
+        <form class="loginbox" action="/loginform" method="POST">
+            <h1>Log-in</h1>
+            <input type="text" placeholder="Enter username" name="userlog">   
+            <input type="password" placeholder="Enter password" name="passlog">
+            <input type="submit" name = "" value="Login" id="register-btn">
+        </form>     
+    </div>        
+</body>
+</html>
+
+<script>
+    // function get(url) {
+    //     var req = new XMLHttpRequest();
+    //     req.open("GET", url);
+    //     req.onreadystatechange = function () {
+    //         if (req.readyState === 4 && req.status === 200) {
+    //             var demo = document.getElementById('studentpage')
+    //             demo.innerText = req.response
+    //             //alert("Welcome to the site, "+ req.response);
+    //         }
+    //     }
+    //     req.send();
+    // }
+    // document.getElementById('register-btn').addEventListener("click", () => get("/register"));
+    
+</script>
