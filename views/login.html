@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Website about browsers">
+    <meta name="keywords" content="browser, webtechnology">
+    <meta name="author" content="Samuel van Rees, Kasper Goes, Sanaz Najiyan Tabriz">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Welcome</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/assessmentClient.js" defer></script>        
-    <title>Document</title>
+    <script src="./js/browserpages.js" defer></script>
+    <script src="js/darkmode.js" defer ></script>
 </head>
 <body class="bodylogin">
     <header>
@@ -27,6 +31,21 @@
         </div>  
 
     </header>
+    <main>
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+            <svg width="100%" 
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 496 496"><path 
+                fill="currentColor" 
+                d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                transform="translate(-8 -8)"/
+            >
+                </path
+                    fill = "current-color"
+                    transform = "translate(-8 -8)"
+                >
+            </svg>
+        </button>
     <div id="studentpage">
         <form class="registerbox"  action="/registerform" method="POST">
             <h1>register</h1>
@@ -40,7 +59,8 @@
             <input type="password" placeholder="Enter password" name="passlog">
             <input type="submit" name = "" value="Login" id="register-btn">
         </form>     
-    </div>        
+    </div>   
+    </main>     
 </body>
 </html>
 
