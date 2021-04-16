@@ -10,6 +10,7 @@ const sanitizer = require("sanitizer");
 const router = express.Router();
 const bodyParser = require('body-parser');//Basically what the body-parser is which allows express to read the body and then parse that into a Json object that we can understand.
 const session = require('express-session');
+//set the session.current and in the when quesiton is called
 app.use(session({
     secret: 'save-key',
     resave: false,
@@ -18,7 +19,7 @@ app.use(session({
 app.get('/' , (req,res) => {
     res.sendFile(path.join(__dirname,'views/login.html'));
 })
-
+// req.session.score = 0
 //http.createServer(function (req, res) {
 //res.writeHead(200, {'Content-Type': 'text/plain'});
 const dbfile = path.resolve(__dirname,'db/student.db'); //where is the file?
@@ -37,21 +38,9 @@ app.get("/index/:student_number", (req, res) => {
         res.send(rows);
     });
 //db.close();
-});
-/*As we want to create tables and then query the data, we call the DB in a serialized mode   */
-app.get('/showeverything', (req, res) => {
-    db.serialize(( () => {
-    db.each('SELECT first_name as name FROM student', (err,row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        res.write(JSON.stringify(row));//q?
-        console.log(row.name);
-    }, () => {
-        res.end();
-    });
+
     // 2: FROM should always include one (or multiple) table names. row doesn't exist yet in this case
-    db.all('SELECT last_name FROM student ORDER BY student_number', [], (err, rows) => {
+    db.all('SELECT student_name FROM student ORDER BY student_number', [], (err, rows) => {
         // 4: 'if (err) {..}' is sufficient, it queries whether an error exists, and if it does, it prints it
         if (err) {
             console.error(err.message);
@@ -60,42 +49,52 @@ app.get('/showeverything', (req, res) => {
             console.log(row.last_name);
         });
     });
-}));
 });
-//app.post
+app.get ("/getQuestions/:quiz_id/", (req, res) => {
+    let currentQuiz = req.session.currentQuizId;
+    req.session.currentQuizId = req.params.quiz_id;
+    //console.log(req)
+    db.all("SELECT * FROM question WHERE (quiz_id==?)",[req.params.quiz_id] ,(err, questionRows)=> {
+        // db.all("SELECT * FROM answer WHERE (que_id==?) AND (quiz_id==?) ", (err, answers) => {
+        //     console.log(" Testtestetstetstets");
+            //res.send({...questionRows[0], answers}); //send the first element return all answers
+        //     res.send(questionRows);
+        // });
+        if (err) {
+            console.error(err.message);
+        }
+        var loggedIn = false;
+        if (req.session.loggedIn){
+            loggedIn = req.session.loggedIn; // Nu wordt naar client side gestuurd of je bent ingelogd. 
+        }
+        questionRows.push(loggedIn)
+        console.log(questionRows);
+        res.send(questionRows)
+      });
+}); 
 
-/*CLOSE database*/
+app.get('/checksessionprogress', (req, res) => {
+    if (req.session.currentQuizId) {
+        res.send({available: true, currentQuizId: req.session.currentQuizId});
+    } else {
+        res.send({available: false});
+    }
+})
 
-// 5: free little db closing function :)
-// db.close((err) => {
-//     if (err) {
-//         return console.error(err.message);
-//     }
-//     console.log("connection closed");
-// }); 
-// })
+
 
 app.get('/register', (req, res) => {
     res.write('hoi')
     }, () => {
         res.end();
     });
-    // 2: FROM should always include one (or multiple) table names. row doesn't exist yet in this case
-    // db.all('SELECT last_name FROM student ORDER BY student_number', [], (err, rows) => {
-    //     // 4: 'if (err) {..}' is sufficient, it queries whether an error exists, and if it does, it prints it
-    //     if (err) {
-    //         console.error(err.message);
-    //     }
-    //     rows.forEach((row) => {
-    //         console.log(row.last_name);
-    //     });
-    // });
+
 
 app.use(bodyParser.urlencoded({ extended: false}));
 
 app.use(express.static("static")); //files that do not change
 
-//post sth to this rout
+//post sth to this rout //why do we do it manually?
 app.post('/registerform', (req, res) => {
     var studentid = Math.floor(Math.random() * 100000);
     console.log(req.body.userreg);
@@ -137,6 +136,7 @@ app.post('/registerform', (req, res) => {
     res.send('Registered successfully');
     }
     );
+    
 
 //JS file maakt niet uit. gaat puur op deze. verandert naar userreg. Zo heet het ook in login.html. Lijkt alsof ie login niet pakt. zal is proberen login.html te verplaatsen naar static. Er is iets waardoor index wel werkt en login niet,. zoek dit uit. 
 app.post('/loginform', (req, res) => {
@@ -153,7 +153,7 @@ app.post('/loginform', (req, res) => {
             if (err)
             {
                 console.log('Error: ' + err);
-                req.session.loggedIn = false;
+                req.session.loggedIn = false; //all data known for current user
                 console.log('in if')
             }
             else
@@ -162,8 +162,10 @@ app.post('/loginform', (req, res) => {
                     console.log('Login Succ')
                     console.log(row)
                     req.session.activeUser = row.student_id;
+                    
                 }
                 );
+                console.log('value of req.session.loggedIn: ' + req.session.loggedIn);
                 console.log('req.session.activeUser: ' + req.session.activeUser);
                 req.session.loggedIn = true;
                 console.log('in else');
@@ -174,140 +176,51 @@ app.post('/loginform', (req, res) => {
     }  
     console.log('Login Fail');
 });
+//how can I import userAnswer to here? do I need serialize?
 
-app.get('/gett1q1q1', (req, res) => {
-    db.serialize(( () => {
-    db.each('SELECT que_text FROM question WHERE (que_id == 1) AND (quiz_id == 11)', (err,row) => {
+
+app.get ("/checkAnswers/:answer/:quizid/:qid", (req, res) => {
+    let currentQuiz = req.session.currentQuizId;
+    var userAnswer = req.params.answer;
+    // req.session.currentquestion ++;
+    db.get("SELECT answer_text FROM answer WHERE (is_correct ==1) AND (que_id==?)", [req.params.qid] , (err,row) => {
+        if (row.answer_text == userAnswer) {
+            ///ADDED: doe de score + 1 
+            db.run("UPDATE score SET student_score == student_score+1 WHERE (student_id == ?) AND (quiz_id == ?)", [req.session.activeUser, req.params.quizid], function(err) {
+                if (err) {
+                    return console.log(err.message);
+                }
+                console.log('A row has been inserted with rowid');
+                });     
+
+            res.send([true]); // client side: display congrats text & increment the questionCounter 
+        }    
+        else {
+            res.send([false,row.answer_text,row.relevant_link]) 
+        }
+    })
+    });  
+
+//url/:quiz_id/:que_id  only returns the question
+app.get ("/getAnswers/:quizid/:qid", (req, res) => {
+    let currentQuiz = req.session.currentQuizId;
+
+    var userAnswer = req.params.answer;
+    req.session.currentquestion ++;
+    console.log(req.params);
+    db.all("SELECT answer_text FROM answer JOIN question on answer.que_id = question.que_id WHERE (question.que_id==?) AND (question.quiz_id==?)",[req.params.qid, req.params.quizid], (err, rows)=> {
+        
         if (err) {
             console.error(err.message);
         }
-        row.loggedIn = false
-        if (req.session.loggedIn){
-            row.loggedIn = req.session.loggedIn; // Nu wordt naar client side gestuurd of je bent ingelogd. 
-        }
-        res.send(row);//q?
-        console.log(row.name);
-    }, () => {
-        res.end();
+        console.log("===================ANSWERS FOUND================");
+        console.log(rows)
+        res.send(rows); //send the first element
     });
-    // 2: FROM should always include one (or multiple) table names. row doesn't exist yet in this case
-    // db.all('SELECT last_name FROM student ORDER BY student_number', [], (err, rows) => {
-    //     // 4: 'if (err) {..}' is sufficient, it queries whether an error exists, and if it does, it prints it
-    //     if (err) {
-    //         console.error(err.message);
-    //     }
-    //     rows.forEach((row) => {
-    //         console.log(row.last_name);
-    //     });
-    // });
-}));
-});
-
-app.get('/getanswer/:ans_id', (req, res) => { // CHECK IF GIVEN ANSWER IS CORRECT req.param // Gebruiker moet ingelogd zijn. 
-    console.log('req.query: ' + JSON.stringify(req.query));
-    console.log('req.params: ' + JSON.stringify(req.params));
-    db.serialize(( () => {
-    db.each('SELECT answer_text FROM answer WHERE ans_id == ?', [req.params.ans_id], (err,row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        if (req.query.givenanswer == row.answer_text){
-            res.send('correct')
-            // EErst quiz id krijgen mbv db.each('SELECT student_score FROM score where   ') 
-        }
-        res.send(row);//q?
-        console.log('rowname: ' + row.name);
-        console.log('row: ' + row);
-    }, () => {
-        res.end();
-    });
-}));
-});
-
-app.get('/userinfo', (req, res) => { // CHECK IF GIVEN ANSWER IS CORRECT req.param // Gebruiker moet ingelogd zijn. 
-    if (req.session.loggedIn){
-        console.log('logged in, save')
-        console.log('req.session.activeUser: ' + req.session.activeUser);
-    }
-    else{
-        console.log('eerst nog inloggen')
-    }
-    db.serialize(( () => {
-    db.each('SELECT student_user, student_pass FROM student WHERE student_id == ?', [req.session.activeUser], (err,row) => {
-        if (err) {
-            console.error(err.message);
-        }
-        res.send(row);//q?
-    }, () => {
-        res.end();
-    });
-}));
-});
-
-app.get('/userinfoscore/:quizid', (req, res) => { // CHECK IF GIVEN ANSWER IS CORRECT req.param // Gebruiker moet ingelogd zijn. 
-    if (req.session.loggedIn){
-        console.log('logged in, save')
-        console.log('req.session.activeUser: ' + req.session.activeUser);
-    }
-    else{
-        console.log('eerst nog inloggen')
-    }
-    db.serialize(( () => {
-    db.each('SELECT student_score, quiz_id FROM score WHERE (student_id == ?) AND (quiz_id == ?)', [req.session.activeUser, req.params.quizid], (err,row) => {
-        console.log('we leven nog')
-        if (err) {
-            console.error(err.message);
-        }
-        console.log(row)
-        res.send(row);//q?
-    }, () => {
-        res.end();
-    });
-}));
-});
-
-app.post('/changeuser', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    db.run("UPDATE student SET student_user == ? WHERE student_id == ?", [req.body.newusername, req.session.activeUser], function(err) {
-        if (err) {
-            return console.log(err.message);
-        }
-        console.log('A row has been inserted with rowid');
-        });         
-    //db.close();   // insert one row into the langs table //never close your database until you close your server
-
-    console.log('your new username is ' + req.body.newusername); //req.body crafts our response
-    res.send('Username changed successfully');
-    }
-    );
-
-    app.post('/changepass', (req, res) => {
-        res.setHeader('Content-Type', 'application/json');
-        db.run("UPDATE student SET student_pass == ? WHERE student_id == ?", [req.body.newpassword, req.session.activeUser], function(err) {
-            if (err) {
-                return console.log(err.message);
-            }
-            console.log('A row has been inserted with rowid');
-            });         
-        //db.close();   // insert one row into the langs table //never close your database until you close your server
     
-        console.log('your new password is ' + req.body.newusername); //req.body crafts our response
-        res.send('Password changed successfully');
-        }
-        );
+    console.log(req.params.quiz_id);
+    
+    }); 
 
-app.listen(8044, 'localhost');
-
-// //#!/usr/bin nodejsvar 
-// http = require('http');
-// http.createServer(function (req, res) {
-//     res.writeHead(200, {'Content-Type': 'text/plain'});
-//     res.end('Hello World.');
-// }).listen(8044, 'localhost');
-
-// var express = require('express');
-// var app = express();
-// app.get('/', function (req, res) {
-//     res.send('Hello, World on express!');
-// });
-// app.listen(8044, 'localhost');
+    
+    const server = app.listen(8044);
