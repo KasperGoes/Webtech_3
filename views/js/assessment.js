@@ -1,3 +1,8 @@
+/*     
+    Role && functionality: 
+    In this javascript file we deal with making the quiz work through the server
+*/
+
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('question-container');

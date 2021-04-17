@@ -1,3 +1,8 @@
+/*     
+    Role && functionality: 
+    In this javascript file we deal with making the quiz work through the server
+*/
+
 //client side javascript file  if quizid starts with begining of topic id show quiz id
 //Make question classes
 class Questions {

@@ -20,56 +20,58 @@
     <script src="./js/browserpages.js" defer></script>
     <script src="js/darkmode.js" defer ></script>
 </head>
-<body class="bodylogin">
-    <header>
-        <div class="container">
-            <div id="branding">
-                <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com</h1>
-            </div>
-            <nav>
-                <ul class="ordering">
-                    <li><a href="home.html">Home</a></li>  
-                    <li><a href="history.html">History</a></li>
-                    <li><a href="marketshare.html">Marketshare</a></li>
-                    <li><a href="assessment.html">Quiz</a></li>
-                    <li><a href="login.html">Login</a> </li>
-                    <li><a href="profile.html">Profile</a> </li>
-                </ul>
-            </nav>
-        </div>  
+<section class="test">
+    <body class="bodylogin">
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1> <img src="./img/logo3.png" alt="Image of the logo of Browserinfo.com"> Browserinfo.com</h1>
+                </div>
+                <nav>
+                    <ul class="ordering">
+                        <li><a href="home.html">Home</a></li>  
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="marketshare.html">Marketshare</a></li>
+                        <li><a href="assessment.html">Quiz</a></li>
+                        <li><a href="login.html">Login</a> </li>
+                        <li><a href="profile.html">Profile</a> </li>
+                    </ul>
+                </nav>
+            </div>  
 
-    </header>
-    <main>
-        <button id="dark-mode-toggle" class="dark-mode-toggle">
-            <svg width="100%" 
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 496 496"><path 
-                fill="currentColor" 
-                d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
-                transform="translate(-8 -8)"/
-            >
-                </path
-                    fill = "current-color"
-                    transform = "translate(-8 -8)"
+        </header>
+        <main>
+            <button id="dark-mode-toggle" class="dark-mode-toggle">
+                <svg width="100%" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 496 496"><path 
+                    fill="currentColor" 
+                    d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" 
+                    transform="translate(-8 -8)"/
                 >
-            </svg>
-        </button>
-    <div id="studentpage">
-        <form class="registerbox"  action="/registerform" method="POST">
-            <h1>register</h1>
-            <input type="text" placeholder="Enter username" name="userreg">   
-            <input type="password" placeholder="Enter password" name="passreg">
-            <input type="submit" name = "" value="Login" id="register-btn0">
-        </form>     
-        <form class="loginbox" action="/loginform" method="POST">
-            <h1>Log-in</h1>
-            <input type="text" placeholder="Enter username" name="userlog">   
-            <input type="password" placeholder="Enter password" name="passlog">
-            <input type="submit" name = "" value="Login" id="register-btn">
-        </form>     
-    </div>   
-    </main>     
-</body>
+                    </path
+                        fill = "current-color"
+                        transform = "translate(-8 -8)"
+                    >
+                </svg>
+            </button>
+        <div id="studentpage">
+            <form class="registerbox"  action="/registerform" method="POST">
+                <h1>register</h1>
+                <input type="text" placeholder="Enter username" name="userreg">   
+                <input type="password" placeholder="Enter password" name="passreg">
+                <input type="submit" name = "" value="Login" id="register-btn0">
+            </form>     
+            <form class="loginbox" action="/loginform" method="POST">
+                <h1>Log-in</h1>
+                <input type="text" placeholder="Enter username" name="userlog">   
+                <input type="password" placeholder="Enter password" name="passlog">
+                <input type="submit" name = "" value="Login" id="register-btn">
+            </form>     
+        </div>   
+        </main>     
+    </body>
+</section>
 </html>
 
 <script>
