@@ -22,7 +22,7 @@ app.get('/' , (req,res) => {
 // req.session.score = 0
 //http.createServer(function (req, res) {
 //res.writeHead(200, {'Content-Type': 'text/plain'});
-const dbfile = path.resolve(__dirname,'db/student.db'); //where is the file?
+const dbfile = path.resolve(__dirname,'db/student1.1.db'); //where is the file?
 /*If a file does not exist, it will be created, otherwise the file will be opened for access  */
 const db = new sqlite3.Database(dbfile, (err) =>{
     if (err) {
@@ -98,7 +98,9 @@ app.use(express.static("static")); //files that do not change
 app.post('/registerform', (req, res) => {
     var studentid = Math.floor(Math.random() * 100000);
     console.log(req.body.userreg);
+    req.session.answeredquestions = []; //Only works if you register first. Not if you use existing login
     res.setHeader('Content-Type', 'application/json');
+    console.log('req.body.userreg: '+ req.body.userreg);
     db.run("INSERT INTO student VALUES(?,?,?)", [studentid, req.body.userreg, req.body.passreg], function(err) {
         if (err) {
             return console.log(err.message);
@@ -125,6 +127,12 @@ app.post('/registerform', (req, res) => {
             });
 
         db.run("INSERT INTO score VALUES(?,?,?)", [22, studentid, 0], function(err) {
+            if (err) {
+                return console.log(err.message);
+            }
+            });
+    
+        db.run("INSERT INTO score VALUES(?,?,?)", [23, studentid, 0], function(err) {
             if (err) {
                 return console.log(err.message);
             }
@@ -186,13 +194,15 @@ app.get ("/checkAnswers/:answer/:quizid/:qid", (req, res) => {
     db.get("SELECT answer_text FROM answer WHERE (is_correct ==1) AND (que_id==?)", [req.params.qid] , (err,row) => {
         if (row.answer_text == userAnswer) {
             ///ADDED: doe de score + 1 
+            if (!req.session.answeredquestions.includes(req.params.qid)){
             db.run("UPDATE score SET student_score == student_score+1 WHERE (student_id == ?) AND (quiz_id == ?)", [req.session.activeUser, req.params.quizid], function(err) {
                 if (err) {
                     return console.log(err.message);
                 }
                 console.log('A row has been inserted with rowid');
                 });     
-
+            };
+            req.session.answeredquestions.push(req.params.qid);
             res.send([true]); // client side: display congrats text & increment the questionCounter 
         }    
         else {
@@ -222,5 +232,76 @@ app.get ("/getAnswers/:quizid/:qid", (req, res) => {
     
     }); 
 
-    
+app.get('/userinfo', (req, res) => { // CHECK IF GIVEN ANSWER IS CORRECT req.param // Gebruiker moet ingelogd zijn. 
+    if (req.session.loggedIn){
+        console.log('logged in, save')
+        console.log('req.session.activeUser: ' + req.session.activeUser);
+    }
+    else{
+        console.log('eerst nog inloggen')
+    }
+    db.serialize(( () => {
+    db.each('SELECT student_user, student_pass FROM student WHERE student_id == ?', [req.session.activeUser], (err,row) => {
+        if (err) {
+            console.error(err.message);
+        }
+        res.send(row);//q?
+    }, () => {
+        res.end();
+    });
+}));
+});
+
+app.get('/userinfoscore/:quizid', (req, res) => { // CHECK IF GIVEN ANSWER IS CORRECT req.param // Gebruiker moet ingelogd zijn. 
+    if (req.session.loggedIn){
+        console.log('logged in, save')
+        console.log('req.session.activeUser: ' + req.session.activeUser);
+    }
+    else{
+        console.log('eerst nog inloggen')
+    }
+    db.serialize(( () => {
+    db.each('SELECT student_score, quiz_id FROM score WHERE (student_id == ?) AND (quiz_id == ?)', [req.session.activeUser, req.params.quizid], (err,row) => {
+        console.log('we leven nog')
+        if (err) {
+            console.error(err.message);
+        }
+        console.log(row)
+        res.send(row);//q?
+    }, () => {
+        res.end();
+    });
+}));
+});
+
+app.post('/changeuser', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    db.run("UPDATE student SET student_user == ? WHERE student_id == ?", [req.body.newusername, req.session.activeUser], function(err) {
+        if (err) {
+            return console.log(err.message);
+        }
+        console.log('A row has been inserted with rowid');
+        });         
+    //db.close();   // insert one row into the langs table //never close your database until you close your server
+
+    console.log('your new username is ' + req.body.newusername); //req.body crafts our response
+    res.send('Username changed successfully');
+    }
+    );
+
+app.post('/changepass', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    db.run("UPDATE student SET student_pass == ? WHERE student_id == ?", [req.body.newpassword, req.session.activeUser], function(err) {
+        if (err) {
+            return console.log(err.message);
+        }
+        console.log('A row has been inserted with rowid');
+        });         
+    //db.close();   // insert one row into the langs table //never close your database until you close your server
+
+    console.log('your new password is ' + req.body.newusername); //req.body crafts our response
+    res.send('Password changed successfully');
+    }
+    );
+
     const server = app.listen(8044);
